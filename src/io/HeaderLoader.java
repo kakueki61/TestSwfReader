@@ -3,6 +3,7 @@ package io;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 
+import model.StructFrameRate;
 import model.StructRect;
 import utils.AnalyzeStruct;
 import utils.ReadBytes;
@@ -43,6 +44,14 @@ public class HeaderLoader {
             System.out.println("xMax: " + structRect.getxMax());
             System.out.println("yMin: " + structRect.getyMin());
             System.out.println("yMax: " + structRect.getyMax());
+            
+            //FrameRate
+            StructFrameRate structFrameRate = AnalyzeStruct.getFrameRate(fis);
+            System.out.println("FrameRate: " + structFrameRate.getIntegerPotion() + "." + structFrameRate.getFractionalPotion());
+            
+            //FrameCount
+            int frameCount = ReadBytes.readUI16(fis);
+            System.out.println("FrameCount: " + frameCount);
             
             fis.close();
         }catch (Exception e) {

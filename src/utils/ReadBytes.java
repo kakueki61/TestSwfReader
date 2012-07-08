@@ -7,6 +7,17 @@ public class ReadBytes {
     private static final String TAG = ReadBytes.class.getSimpleName();
     
     /**
+     * Reads UI8 value(no need ?)
+     * @param i
+     * @return
+     * @throws IOException
+     */
+    public static int readUI8(InputStream i) throws IOException {
+        ReadBits.completeReadBits();
+        
+        return i.read();
+    }
+    /**
      * UI16ílÇì«Ç›çûÇﬁ
      * @param i
      * @return

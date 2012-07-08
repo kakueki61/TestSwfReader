@@ -2,7 +2,9 @@ package utils;
 
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.InputStream;
 
+import model.StructFrameRate;
 import model.StructRect;
 
 public class AnalyzeStruct {
@@ -29,5 +31,19 @@ public class AnalyzeStruct {
         rect.setyMax(yMax);
         
         return rect;
+    }
+    
+    public static StructFrameRate getFrameRate(InputStream i) throws IOException {
+        ReadBits.completeReadBits();
+        
+        StructFrameRate frameRate = new StructFrameRate();
+        
+        int fractional = i.read();
+        frameRate.setFractionalPotion(fractional);
+        
+        int integer = i.read();
+        frameRate.setIntegerPotion(integer);
+        
+        return frameRate;
     }
 }
